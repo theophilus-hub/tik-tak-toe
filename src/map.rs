@@ -1,5 +1,5 @@
 pub fn map(coordinates: &Vec<Vec<i32>>){
-   
+    print! ("\x1B[2J\x1B[1;1H");
     println!("TIK TAC TOE!");
     let rows: Vec<i32> =     vec![1,0,1,0,1,0,1];
     let coloumns: Vec<i32> = vec![1,0,1,0,1,0,1];

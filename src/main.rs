@@ -15,6 +15,7 @@ fn main() {
 
 
     //METHOD OF PLAY
+    print! ("\x1B[2J\x1B[1;1H");
     println!("how would you like to play? \nchoose between 1 and 2 \n (1)text? (2)numpad?");
     io::stdin().read_line(&mut game_choice).expect("cant read input");
 
@@ -41,25 +42,35 @@ fn main() {
                         //random number increase
                         random +=1;
 
-                        if v == 1 {
-                            let _change = replace(&mut coordinates[2][0], random);
-                        }else if v == 2 {
-                            let _change = replace(&mut coordinates[2][1], random);
-                        }else if v == 3 {
-                            let _change = replace(&mut coordinates[2][2], random);
-                        }else if v == 4 {
-                            let _change = replace(&mut coordinates[1][0], random);
-                        }else if v == 5 {
-                            let _change = replace(&mut coordinates[1][1], random);
-                        }else if v == 6 {
-                            let _change = replace(&mut coordinates[1][2], random);
-                        }else if v == 7 {
-                            let _change = replace(&mut coordinates[0][0], random);
-                        }else if v == 8 {
-                            let _change = replace(&mut coordinates[0][1], random);
+                        //assigning the numpad values to the placevalues in the x and o box [version 2]
+                        if v < 4 {
+                            let _change = replace(&mut coordinates[2][v as usize -1], random);
+                        }else if v > 3 && v < 7{
+                            let _change = replace(&mut coordinates[1][v as usize -4], random);
                         }else{
-                            let _change = replace(&mut coordinates[0][2], random);
+                            let _change = replace(&mut coordinates[0][v as usize -7], random);
                         }
+
+                        //assigning the numpad values to the placevalues in the x and o box [version 1]
+                        // if v == 1 {
+                        //     let _change = replace(&mut coordinates[2][0], random);
+                        // }else if v == 2 {
+                        //     let _change = replace(&mut coordinates[2][1], random);
+                        // }else if v == 3 {
+                        //     let _change = replace(&mut coordinates[2][2], random);
+                        // }else if v == 4 {
+                        //     let _change = replace(&mut coordinates[1][0], random);
+                        // }else if v == 5 {
+                        //     let _change = replace(&mut coordinates[1][1], random);
+                        // }else if v == 6 {
+                        //     let _change = replace(&mut coordinates[1][2], random);
+                        // }else if v == 7 {
+                        //     let _change = replace(&mut coordinates[0][0], random);
+                        // }else if v == 8 {
+                        //     let _change = replace(&mut coordinates[0][1], random);
+                        // }else{
+                        //     let _change = replace(&mut coordinates[0][2], random);
+                        // }
 
 
                         numpad.retain(|&x| x != v);
